@@ -6,6 +6,12 @@
     <title>Arbor Vitae Project - Central Hub</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("NzTDvnHj2OF6vAWbe"); // Your EmailJS public key
+        })();
+    </script>
 </head>
 <body>
     <header>
@@ -40,14 +46,15 @@
     <section id="contact">
         <h2>Contact Us</h2>
         <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="from_name">Name:</label>
+            <input type="text" id="from_name" name="from_name" required>
+            <label for="reply_to">Email:</label>
+            <input type="email" id="reply_to" name="reply_to" required>
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
+        <p id="thank-you-message" style="display: none;">Thank you for reaching out! We will get back to you soon.</p>
     </section>
 
     <footer>
