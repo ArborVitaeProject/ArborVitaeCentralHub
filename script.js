@@ -2,11 +2,35 @@
 document.querySelectorAll('nav ul li a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
+        
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            const navHeight = document.querySelector('nav').offsetHeight;
+            const bufferOffset = 140; // Adjust this value if needed
+            const targetPosition = targetElement.offsetTop - navHeight - bufferOffset;
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
+});
+
+// Contact Form Submission
+document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    alert(`Thank you, ${name}! Your message has been received.`);
+    
+    // Clear form
+    document.getElementById('contact-form').reset();
 });
 
 // Fancy Effects
@@ -26,18 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
             section.style.opacity = 1;
         }, 1000 + index * 500);
     });
-});
-
-// Contact Form Submission
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    alert(`Thank you, ${name}! Your message has been received.`);
-    
-    // Clear form
-    document.getElementById('contact-form').reset();
 });
