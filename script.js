@@ -20,17 +20,20 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
 });
 
 // Contact Form Submission
-document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    const serviceID = 'service_ray4798'; // Your EmailJS service ID
+    const templateID = 'template_4qzldef'; // Your EmailJS template ID
 
-    alert(`Thank you, ${name}! Your message has been received.`);
-    
-    // Clear form
-    document.getElementById('contact-form').reset();
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            document.getElementById('thank-you-message').style.display = 'block';
+            document.getElementById('contact-form').reset();
+        }, (err) => {
+            console.error('Failed to send email:', err);
+            alert('Failed to send message. Please try again later.');
+        });
 });
 
 // Fancy Effects
