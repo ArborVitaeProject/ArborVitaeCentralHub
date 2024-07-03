@@ -31,10 +31,11 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 1em 0 0;
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    margin: 0 1em;
+    margin: 0.5em 1em;
 }
 
 nav ul li a {
@@ -109,6 +110,8 @@ footer {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 1em;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #contact-form button {
@@ -123,4 +126,9 @@ footer {
 
 #contact-form button:hover {
     background-color: #8B4513;
+}
+
+#thank-you-message {
+    margin-top: 1em;
+    color: green;
 }

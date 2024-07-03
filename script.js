@@ -20,18 +20,23 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
 });
 
 // Contact Form Submission
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
     
+    console.log('Form submitted'); // Debugging
+    alert('Form submitted'); // Debugging
+
     const serviceID = 'service_ray4798'; // Your EmailJS service ID
     const templateID = 'template_4qzldef'; // Your EmailJS template ID
 
     emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
+            console.log('Email sent successfully'); // Debugging
+            alert('Email sent successfully'); // Debugging
             document.getElementById('thank-you-message').style.display = 'block';
             document.getElementById('contact-form').reset();
         }, (err) => {
-            console.error('Failed to send email:', err);
+            console.error('Failed to send email:', err); // Debugging
             alert('Failed to send message. Please try again later.');
         });
 });
